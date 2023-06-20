@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
    Context context;
-   ArrayList<ModelUser> listaItem;
+   ArrayList name_id,lastname_id;
 
-   RecyclerAdapter(Context context,ArrayList<ModelUser> arraylist){
-       this.context=context;
-       this.listaItem = arraylist;
-   }
+    public RecyclerAdapter(Context context, ArrayList name_id, ArrayList lastname_id) {
+        this.context = context;
+        this.name_id = name_id;
+        this.lastname_id = lastname_id;
+    }
 
     @NonNull
     @Override
@@ -32,19 +33,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-       holder.text.setText(listaItem.get(position).text);
+       holder.text.setText(String.valueOf(name_id.get(position)));
+       holder.text2.setText(String.valueOf(lastname_id.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return listaItem.size();
+        return name_id.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView text;
+        TextView text,text2;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.item_texto);
+            text2= itemView.findViewById(R.id.Text2);
         }
     }
 }
